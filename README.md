@@ -14,3 +14,11 @@ pip install .
 
 pip uninstall m5gfx
 
+issue:
+
+- no handle to colors_t, so no Gradient functions yet
+
+- no Palette handle yet
+
+- no pushImage yet
+
