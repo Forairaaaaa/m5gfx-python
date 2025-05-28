@@ -21,8 +21,9 @@ PYBIND11_MODULE(m5gfx, m)
         .def("init", &LGFX::init)
         .def("begin", &LGFX::begin)
         .def("isAllClosed", &LGFX::isAllClosed)
-        .def("startWrite", &LGFX::startWrite)
-        .def("endWrite", &LGFX::endWrite);
+        .def("fillRect", [](LGFX& self, int32_t arg0, int32_t arg1, int32_t arg2, int32_t arg3,
+                            uint32_t arg4) { self.fillRect(arg0, arg1, arg2, arg3, arg4); })
+        .def("fillRect", static_cast<void (LGFX::*)(int32_t x, int32_t y, int32_t w, int32_t h)>(&LGFX::fillRect));
 
     m.attr("TFT_WHITE") = TFT_WHITE;
 }
