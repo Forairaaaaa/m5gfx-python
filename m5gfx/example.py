@@ -12,5 +12,9 @@ gfx.fillRect(100, 150, 20, 30)
 
 gfx.drawEllipseArc(100, 100, 50, 100, 50, 100, 0, 360, 0xff0000)
 
+gfx.setFont(m5gfx.efontCN_24)
+gfx.setTextDatum(m5gfx.textdatum_t.middle_center)
+gfx.drawString("Hello, World!", 160, 120)
+
 while not gfx.isAllClosed():
     time.sleep(1)

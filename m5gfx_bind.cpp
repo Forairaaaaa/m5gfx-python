@@ -12,6 +12,7 @@
 #include <M5GFX.h>
 #include <cstddef>
 #include <cstdint>
+#include "lgfx/v1/lgfx_fonts.hpp"
 #include "lgfx_sdl.hpp"
 
 namespace py = pybind11;
@@ -20,19 +21,93 @@ PYBIND11_MODULE(m5gfx, m)
 {
     m.doc() = "Graphics library for M5Stack series  \n";
     m.def("delay", lgfx::delay, pybind11::arg("milliseconds"));
-    m.attr("DejaVu9")    = (unsigned long long)&lgfx::v1::fonts::DejaVu9;
-    m.attr("DejaVu12")   = (unsigned long long)&lgfx::v1::fonts::DejaVu12;
-    m.attr("DejaVu18")   = (unsigned long long)&lgfx::v1::fonts::DejaVu18;
-    m.attr("DejaVu24")   = (unsigned long long)&lgfx::v1::fonts::DejaVu24;
-    m.attr("DejaVu40")   = (unsigned long long)&lgfx::v1::fonts::DejaVu40;
-    m.attr("DejaVu56")   = (unsigned long long)&lgfx::v1::fonts::DejaVu56;
-    m.attr("DejaVu72")   = (unsigned long long)&lgfx::v1::fonts::DejaVu72;
-    m.attr("efontCN_14") = (unsigned long long)&lgfx::v1::fonts::efontCN_14;
-    m.attr("efontCN_24") = (unsigned long long)&lgfx::v1::fonts::efontCN_24;
-    m.attr("efontJA_14") = (unsigned long long)&lgfx::v1::fonts::efontJA_14;
-    m.attr("efontJA_24") = (unsigned long long)&lgfx::v1::fonts::efontJA_24;
-    m.attr("efontKR_14") = (unsigned long long)&lgfx::v1::fonts::efontKR_14;
-    m.attr("efontKR_24") = (unsigned long long)&lgfx::v1::fonts::efontKR_24;
+    m.attr("DejaVu9")       = (unsigned long long)&lgfx::v1::fonts::DejaVu9;
+    m.attr("DejaVu12")      = (unsigned long long)&lgfx::v1::fonts::DejaVu12;
+    m.attr("DejaVu18")      = (unsigned long long)&lgfx::v1::fonts::DejaVu18;
+    m.attr("DejaVu24")      = (unsigned long long)&lgfx::v1::fonts::DejaVu24;
+    m.attr("DejaVu40")      = (unsigned long long)&lgfx::v1::fonts::DejaVu40;
+    m.attr("DejaVu56")      = (unsigned long long)&lgfx::v1::fonts::DejaVu56;
+    m.attr("DejaVu72")      = (unsigned long long)&lgfx::v1::fonts::DejaVu72;
+    m.attr("efontCN_10")    = (unsigned long long)&lgfx::v1::fonts::efontCN_10;
+    m.attr("efontCN_10_b")  = (unsigned long long)&lgfx::v1::fonts::efontCN_10_b;
+    m.attr("efontCN_10_bi") = (unsigned long long)&lgfx::v1::fonts::efontCN_10_bi;
+    m.attr("efontCN_10_i")  = (unsigned long long)&lgfx::v1::fonts::efontCN_10_i;
+    m.attr("efontCN_12")    = (unsigned long long)&lgfx::v1::fonts::efontCN_12;
+    m.attr("efontCN_12_b")  = (unsigned long long)&lgfx::v1::fonts::efontCN_12_b;
+    m.attr("efontCN_12_bi") = (unsigned long long)&lgfx::v1::fonts::efontCN_12_bi;
+    m.attr("efontCN_12_i")  = (unsigned long long)&lgfx::v1::fonts::efontCN_12_i;
+    m.attr("efontCN_14")    = (unsigned long long)&lgfx::v1::fonts::efontCN_14;
+    m.attr("efontCN_14_b")  = (unsigned long long)&lgfx::v1::fonts::efontCN_14_b;
+    m.attr("efontCN_14_bi") = (unsigned long long)&lgfx::v1::fonts::efontCN_14_bi;
+    m.attr("efontCN_14_i")  = (unsigned long long)&lgfx::v1::fonts::efontCN_14_i;
+    m.attr("efontCN_16")    = (unsigned long long)&lgfx::v1::fonts::efontCN_16;
+    m.attr("efontCN_16_b")  = (unsigned long long)&lgfx::v1::fonts::efontCN_16_b;
+    m.attr("efontCN_16_bi") = (unsigned long long)&lgfx::v1::fonts::efontCN_16_bi;
+    m.attr("efontCN_16_i")  = (unsigned long long)&lgfx::v1::fonts::efontCN_16_i;
+    m.attr("efontCN_24")    = (unsigned long long)&lgfx::v1::fonts::efontCN_24;
+    m.attr("efontCN_24_b")  = (unsigned long long)&lgfx::v1::fonts::efontCN_24_b;
+    m.attr("efontCN_24_bi") = (unsigned long long)&lgfx::v1::fonts::efontCN_24_bi;
+    m.attr("efontCN_24_i")  = (unsigned long long)&lgfx::v1::fonts::efontCN_24_i;
+    m.attr("efontJA_10")    = (unsigned long long)&lgfx::v1::fonts::efontJA_10;
+    m.attr("efontJA_10_b")  = (unsigned long long)&lgfx::v1::fonts::efontJA_10_b;
+    m.attr("efontJA_10_bi") = (unsigned long long)&lgfx::v1::fonts::efontJA_10_bi;
+    m.attr("efontJA_10_i")  = (unsigned long long)&lgfx::v1::fonts::efontJA_10_i;
+    m.attr("efontJA_12")    = (unsigned long long)&lgfx::v1::fonts::efontJA_12;
+    m.attr("efontJA_12_b")  = (unsigned long long)&lgfx::v1::fonts::efontJA_12_b;
+    m.attr("efontJA_12_bi") = (unsigned long long)&lgfx::v1::fonts::efontJA_12_bi;
+    m.attr("efontJA_12_i")  = (unsigned long long)&lgfx::v1::fonts::efontJA_12_i;
+    m.attr("efontJA_14")    = (unsigned long long)&lgfx::v1::fonts::efontJA_14;
+    m.attr("efontJA_14_b")  = (unsigned long long)&lgfx::v1::fonts::efontJA_14_b;
+    m.attr("efontJA_14_bi") = (unsigned long long)&lgfx::v1::fonts::efontJA_14_bi;
+    m.attr("efontJA_14_i")  = (unsigned long long)&lgfx::v1::fonts::efontJA_14_i;
+    m.attr("efontJA_16")    = (unsigned long long)&lgfx::v1::fonts::efontJA_16;
+    m.attr("efontJA_16_b")  = (unsigned long long)&lgfx::v1::fonts::efontJA_16_b;
+    m.attr("efontJA_16_bi") = (unsigned long long)&lgfx::v1::fonts::efontJA_16_bi;
+    m.attr("efontJA_16_i")  = (unsigned long long)&lgfx::v1::fonts::efontJA_16_i;
+    m.attr("efontJA_24")    = (unsigned long long)&lgfx::v1::fonts::efontJA_24;
+    m.attr("efontJA_24_b")  = (unsigned long long)&lgfx::v1::fonts::efontJA_24_b;
+    m.attr("efontJA_24_bi") = (unsigned long long)&lgfx::v1::fonts::efontJA_24_bi;
+    m.attr("efontJA_24_i")  = (unsigned long long)&lgfx::v1::fonts::efontJA_24_i;
+    m.attr("efontKR_10")    = (unsigned long long)&lgfx::v1::fonts::efontKR_10;
+    m.attr("efontKR_10_b")  = (unsigned long long)&lgfx::v1::fonts::efontKR_10_b;
+    m.attr("efontKR_10_bi") = (unsigned long long)&lgfx::v1::fonts::efontKR_10_bi;
+    m.attr("efontKR_10_i")  = (unsigned long long)&lgfx::v1::fonts::efontKR_10_i;
+    m.attr("efontKR_12")    = (unsigned long long)&lgfx::v1::fonts::efontKR_12;
+    m.attr("efontKR_12_b")  = (unsigned long long)&lgfx::v1::fonts::efontKR_12_b;
+    m.attr("efontKR_12_bi") = (unsigned long long)&lgfx::v1::fonts::efontKR_12_bi;
+    m.attr("efontKR_12_i")  = (unsigned long long)&lgfx::v1::fonts::efontKR_12_i;
+    m.attr("efontKR_14")    = (unsigned long long)&lgfx::v1::fonts::efontKR_14;
+    m.attr("efontKR_14_b")  = (unsigned long long)&lgfx::v1::fonts::efontKR_14_b;
+    m.attr("efontKR_14_bi") = (unsigned long long)&lgfx::v1::fonts::efontKR_14_bi;
+    m.attr("efontKR_14_i")  = (unsigned long long)&lgfx::v1::fonts::efontKR_14_i;
+    m.attr("efontKR_16")    = (unsigned long long)&lgfx::v1::fonts::efontKR_16;
+    m.attr("efontKR_16_b")  = (unsigned long long)&lgfx::v1::fonts::efontKR_16_b;
+    m.attr("efontKR_16_bi") = (unsigned long long)&lgfx::v1::fonts::efontKR_16_bi;
+    m.attr("efontKR_16_i")  = (unsigned long long)&lgfx::v1::fonts::efontKR_16_i;
+    m.attr("efontKR_24")    = (unsigned long long)&lgfx::v1::fonts::efontKR_24;
+    m.attr("efontKR_24_b")  = (unsigned long long)&lgfx::v1::fonts::efontKR_24_b;
+    m.attr("efontKR_24_bi") = (unsigned long long)&lgfx::v1::fonts::efontKR_24_bi;
+    m.attr("efontKR_24_i")  = (unsigned long long)&lgfx::v1::fonts::efontKR_24_i;
+    m.attr("efontTW_10")    = (unsigned long long)&lgfx::v1::fonts::efontTW_10;
+    m.attr("efontTW_10_b")  = (unsigned long long)&lgfx::v1::fonts::efontTW_10_b;
+    m.attr("efontTW_10_bi") = (unsigned long long)&lgfx::v1::fonts::efontTW_10_bi;
+    m.attr("efontTW_10_i")  = (unsigned long long)&lgfx::v1::fonts::efontTW_10_i;
+    m.attr("efontTW_12")    = (unsigned long long)&lgfx::v1::fonts::efontTW_12;
+    m.attr("efontTW_12_b")  = (unsigned long long)&lgfx::v1::fonts::efontTW_12_b;
+    m.attr("efontTW_12_bi") = (unsigned long long)&lgfx::v1::fonts::efontTW_12_bi;
+    m.attr("efontTW_12_i")  = (unsigned long long)&lgfx::v1::fonts::efontTW_12_i;
+    m.attr("efontTW_14")    = (unsigned long long)&lgfx::v1::fonts::efontTW_14;
+    m.attr("efontTW_14_b")  = (unsigned long long)&lgfx::v1::fonts::efontTW_14_b;
+    m.attr("efontTW_14_bi") = (unsigned long long)&lgfx::v1::fonts::efontTW_14_bi;
+    m.attr("efontTW_14_i")  = (unsigned long long)&lgfx::v1::fonts::efontTW_14_i;
+    m.attr("efontTW_16")    = (unsigned long long)&lgfx::v1::fonts::efontTW_16;
+    m.attr("efontTW_16_b")  = (unsigned long long)&lgfx::v1::fonts::efontTW_16_b;
+    m.attr("efontTW_16_bi") = (unsigned long long)&lgfx::v1::fonts::efontTW_16_bi;
+    m.attr("efontTW_16_i")  = (unsigned long long)&lgfx::v1::fonts::efontTW_16_i;
+    m.attr("efontTW_24")    = (unsigned long long)&lgfx::v1::fonts::efontTW_24;
+    m.attr("efontTW_24_b")  = (unsigned long long)&lgfx::v1::fonts::efontTW_24_b;
+    m.attr("efontTW_24_bi") = (unsigned long long)&lgfx::v1::fonts::efontTW_24_bi;
+    m.attr("efontTW_24_i")  = (unsigned long long)&lgfx::v1::fonts::efontTW_24_i;
 
     py::class_<lgfx::v1::TextStyle>(m, "TextStyle")
         .def(py::init())
