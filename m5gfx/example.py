@@ -1,10 +1,10 @@
 import m5gfx
+import time
 
+gfx = m5gfx.M5GFX(320, 240)
+print("TFT_WHITE:", m5gfx.TFT_WHITE)
 
-def main():
-    gfx = m5gfx.M5GFX(320, 240)
-    print("TFT_WHITE:", m5gfx.TFT_WHITE)
+gfx.begin()
 
-
-if __name__ == "__main__":
-    main()
+while not gfx.isAllClosed():
+    time.sleep(1)

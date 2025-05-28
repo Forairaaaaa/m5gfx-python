@@ -16,25 +16,20 @@ Contributors:
  [tobozo](https://github.com/tobozo)
 /----------------------------------------------------------------------------*/
 #pragma once
-
-// #include "../v1_init.hpp"
-// #include "common.hpp"
-// #include "../v1/platforms/sdl/Panel_sdl.hpp"
+#include <M5GFX.h>
+#include <thread>
+#include <atomic>
 #include <lgfx/v1/platforms/common.hpp>
 #include <lgfx/v1/platforms/sdl/Panel_sdl.hpp>
+#include <pybind11/pybind11.h>
+
+namespace py = pybind11;
 
 namespace lgfx {
 inline namespace v1 {
 //----------------------------------------------------------------------------
 
 class LGFX : public LGFX_Device {
-    lgfx::Panel_sdl _panel_instance;
-
-    bool init_impl(bool use_reset, bool use_clear)
-    {
-        return LGFX_Device::init_impl(false, use_clear);
-    }
-
 public:
     LGFX(int width = 320, int height = 240, uint_fast8_t scaling_x = 0, uint_fast8_t scaling_y = 0)
     {
@@ -52,7 +47,54 @@ public:
         }
         _panel_instance.setScaling(scaling_x, scaling_y);
         setPanel(&_panel_instance);
-        // _board = board_t::board_SDL;
+
+        // Create sdl thread
+        _running    = true;
+        _sdl_thread = std::thread([this]() { this->sdl_thread(); });
+    }
+
+    ~LGFX()
+    {
+        // Join sdl thread
+        _running = false;
+        if (_sdl_thread.joinable()) {
+            _sdl_thread.join();
+        }
+    }
+
+    bool isAllClosed() const
+    {
+        return _all_closed;
+    }
+
+private:
+    lgfx::Panel_sdl _panel_instance;
+
+    bool init_impl(bool use_reset, bool use_clear)
+    {
+        return LGFX_Device::init_impl(false, use_clear);
+    }
+
+    std::thread _sdl_thread;
+    std::atomic<bool> _running{false};
+    std::atomic<bool> _all_closed{false};
+
+    void sdl_thread()
+    {
+        if (0 != Panel_sdl::setup()) {
+            py::print("[m5gfx] [error] Panel_sdl::setup() failed");
+            return;
+        }
+
+        while (_running) {
+            if (lgfx::Panel_sdl::loop()) {
+                _all_closed = true;
+                break;
+            }
+            std::this_thread::sleep_for(std::chrono::milliseconds(8));
+        }
+
+        Panel_sdl::close();
     }
 };
 
