@@ -1,0 +1,12 @@
+[
+    {
+        "url": "https://github.com/m5stack/M5GFX.git",
+        "path": "dependencies/M5GFX",
+        "branch": "0.2.8"
+    },
+    {
+        "url": "https://github.com/pybind/pybind11.git",
+        "path": "dependencies/pybind11",
+        "branch": "v2.13.6"
+    }
+]
