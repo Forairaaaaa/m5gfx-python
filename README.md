@@ -24,4 +24,6 @@ issue:
 
 - RLEfont not working
 
+- no sprite yet
+
 

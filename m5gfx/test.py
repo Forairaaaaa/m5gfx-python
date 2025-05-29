@@ -1,12 +1,355 @@
 import m5gfx
 import time
-import random
+# Refs: https://github.com/Bodmer/TFT_eSPI/blob/master/examples/480%20x%20320/TFT_graphicstest_one_lib/TFT_graphicstest_one_lib.ino
 
 gfx = m5gfx.M5GFX(320, 240)
 gfx.begin()
 
 
-def font_test():
+def test_fill_screen():
+    print("test_fill_screen")
+    colors = [0x000000, 0xff0000, 0x00ff00, 0x0000ff]
+    for color in colors:
+        gfx.fillScreen(color)
+        time.sleep(0.2)
+        if gfx.isAllClosed():
+            break
+
+
+def test_draw_line():
+    print("test_draw_line")
+    w = gfx.width()
+    h = gfx.height()
+    color = 0xffffff  # 白色
+
+    # 从左上角开始
+    gfx.fillScreen(0x000000)
+    x1, y1 = 0, 0
+    for x2 in range(0, w, 6):
+        gfx.drawLine(x1, y1, x2, h-1, color)
+    for y2 in range(0, h, 6):
+        gfx.drawLine(x1, y1, w-1, y2, color)
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+    # 从右上角开始
+    gfx.fillScreen(0x000000)
+    x1, y1 = w-1, 0
+    for x2 in range(0, w, 6):
+        gfx.drawLine(x1, y1, x2, h-1, color)
+    for y2 in range(0, h, 6):
+        gfx.drawLine(x1, y1, 0, y2, color)
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+    # 从左下角开始
+    gfx.fillScreen(0x000000)
+    x1, y1 = 0, h-1
+    for x2 in range(0, w, 6):
+        gfx.drawLine(x1, y1, x2, 0, color)
+    for y2 in range(0, h, 6):
+        gfx.drawLine(x1, y1, w-1, y2, color)
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+    # 从右下角开始
+    gfx.fillScreen(0x000000)
+    x1, y1 = w-1, h-1
+    for x2 in range(0, w, 6):
+        gfx.drawLine(x1, y1, x2, 0, color)
+    for y2 in range(0, h, 6):
+        gfx.drawLine(x1, y1, 0, y2, color)
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_draw_fast_line():
+    print("test_draw_fast_line")
+    w = gfx.width()
+    h = gfx.height()
+    color1 = 0xff0000  # 红色
+    color2 = 0x0000ff  # 蓝色
+
+    gfx.fillScreen(0x000000)
+
+    # 画水平线
+    for y in range(0, h, 5):
+        gfx.drawFastHLine(0, y, w, color1)
+
+    # 画垂直线
+    for x in range(0, w, 5):
+        gfx.drawFastVLine(x, 0, h, color2)
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_draw_rect():
+    print("test_draw_rect")
+    w = gfx.width()
+    h = gfx.height()
+    color = 0xffffff  # 白色
+
+    gfx.fillScreen(0x000000)
+
+    # 计算中心点
+    cx = w // 2
+    cy = h // 2
+
+    # 计算最大尺寸
+    n = min(w, h)
+
+    # 画空心矩形
+    for i in range(2, n, 6):
+        i2 = i // 2
+        gfx.drawRect(cx - i2, cy - i2, i, i, color)
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_fill_rect():
+    print("test_fill_rect")
+    w = gfx.width()
+    h = gfx.height()
+    color1 = 0xff0000  # 红色填充
+    color2 = 0x0000ff  # 蓝色边框
+
+    gfx.fillScreen(0x000000)
+
+    # 计算中心点
+    cx = w // 2 - 1
+    cy = h // 2 - 1
+
+    # 计算最大尺寸
+    n = min(w, h)
+
+    # 画实心矩形
+    for i in range(n-1, 0, -6):
+        i2 = i // 2
+        gfx.fillRect(cx - i2, cy - i2, i, i, color1)
+        gfx.drawRect(cx - i2, cy - i2, i, i, color2)
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_fill_circle():
+    print("test_fill_circle")
+    w = gfx.width()
+    h = gfx.height()
+    radius = 10
+    color = 0x00ff00  # 绿色
+    r2 = radius * 2
+
+    gfx.fillScreen(0x000000)
+
+    # 画实心圆
+    for x in range(radius, w, r2):
+        for y in range(radius, h, r2):
+            gfx.fillCircle(x, y, radius, color)
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_fill_smooth_circle():
+    print("test_fill_smooth_circle")
+    w = gfx.width()
+    h = gfx.height()
+    radius = 10
+    color = 0x00ff00  # 绿色
+    r2 = radius * 2
+
+    gfx.fillScreen(0x000000)
+
+    # 画实心圆
+    for x in range(radius, w, r2):
+        for y in range(radius, h, r2):
+            gfx.fillSmoothCircle(x, y, radius, color)
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_draw_circle():
+    print("test_draw_circle")
+    w = gfx.width()
+    h = gfx.height()
+    radius = 10
+    color = 0xffff00  # 黄色
+    r2 = radius * 2
+
+    # 注意：这里不清屏，保持之前的图案
+
+    # 画空心圆
+    for x in range(0, w + radius, r2):
+        for y in range(0, h + radius, r2):
+            gfx.drawCircle(x, y, radius, color)
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_draw_triangle():
+    print("test_draw_triangle")
+    w = gfx.width()
+    h = gfx.height()
+
+    # 计算中心点
+    cx = w // 2 - 1
+    cy = h // 2 - 1
+
+    gfx.fillScreen(0x000000)
+
+    # 计算最大尺寸
+    n = min(cx, cy)
+
+    # 画空心三角形
+    for i in range(0, n, 5):
+        # 使用蓝色，颜色值随i变化
+        color = gfx.color565(0, 0, i)
+        gfx.drawTriangle(
+            cx, cy - i,     # 顶点
+            cx - i, cy + i,  # 左下
+            cx + i, cy + i,  # 右下
+            color
+        )
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_fill_triangle():
+    print("test_fill_triangle")
+    w = gfx.width()
+    h = gfx.height()
+
+    # 计算中心点
+    cx = w // 2 - 1
+    cy = h // 2 - 1
+
+    gfx.fillScreen(0x000000)
+
+    # 计算最大尺寸
+    n = min(cx, cy)
+
+    # 画实心三角形
+    for i in range(n, 10, -5):
+        # 填充使用青色，颜色值随i变化
+        fill_color = gfx.color565(0, i, i)
+        # 边框使用黄色，颜色值随i变化
+        border_color = gfx.color565(i, i, 0)
+
+        gfx.fillTriangle(
+            cx, cy - i,     # 顶点
+            cx - i, cy + i,  # 左下
+            cx + i, cy + i,  # 右下
+            fill_color
+        )
+        gfx.drawTriangle(
+            cx, cy - i,     # 顶点
+            cx - i, cy + i,  # 左下
+            cx + i, cy + i,  # 右下
+            border_color
+        )
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_draw_round_rect():
+    print("test_draw_round_rect")
+    w = gfx.width()
+    h = gfx.height()
+
+    # 计算中心点
+    cx = w // 2 - 1
+    cy = h // 2 - 1
+
+    gfx.fillScreen(0x000000)
+
+    # 计算最大尺寸
+    n = min(w, h)
+
+    # 画空心圆角矩形
+    for i in range(0, n, 6):
+        i2 = i // 2
+        # 使用红色，颜色值随i变化
+        color = gfx.color565(i, 0, 0)
+        gfx.drawRoundRect(cx - i2, cy - i2, i, i, i // 8, color)
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_fill_round_rect():
+    print("test_fill_round_rect")
+    w = gfx.width()
+    h = gfx.height()
+
+    # 计算中心点
+    cx = w // 2 - 1
+    cy = h // 2 - 1
+
+    gfx.fillScreen(0x000000)
+
+    # 计算最大尺寸
+    n = min(w, h)
+
+    # 画实心圆角矩形
+    for i in range(n, 20, -6):
+        i2 = i // 2
+        # 使用绿色，颜色值随i变化
+        color = gfx.color565(0, i, 0)
+        gfx.fillRoundRect(cx - i2, cy - i2, i, i, i // 8, color)
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_fill_smooth_round_rect():
+    print("test_fill_smooth_round_rect")
+    w = gfx.width()
+    h = gfx.height()
+
+    # 计算中心点
+    cx = w // 2 - 1
+    cy = h // 2 - 1
+
+    gfx.fillScreen(0x000000)
+
+    # 计算最大尺寸
+    n = min(w, h)
+
+    # 画实心圆角矩形
+    for i in range(n, 20, -6):
+        i2 = i // 2
+        # 使用绿色，颜色值随i变化
+        color = gfx.color565(0, i, 0)
+        gfx.fillSmoothRoundRect(cx - i2, cy - i2, i, i, i // 8, color)
+
+    time.sleep(0.2)
+    if gfx.isAllClosed():
+        return
+
+
+def test_font():
+    print("test_font")
     font_map = {
         "Font0": m5gfx.Font0,
         "Font2": m5gfx.Font2,
@@ -194,6 +537,21 @@ def font_test():
         gfx.println(
             "Hello, World!123~!@#$%^&*()_+-=\{\}[]:;'<>,./?")
         time.sleep(0.05)
+        if gfx.isAllClosed():
+            break
 
 
-font_test()
+test_fill_screen()
+test_draw_line()
+test_draw_fast_line()
+test_draw_rect()
+test_fill_rect()
+test_fill_circle()
+test_fill_smooth_circle()
+test_draw_circle()
+test_draw_triangle()
+test_fill_triangle()
+test_draw_round_rect()
+test_fill_round_rect()
+test_fill_smooth_round_rect()
+test_font()

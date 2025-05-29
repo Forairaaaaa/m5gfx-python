@@ -20,9 +20,8 @@ gfx.fillSmoothCircle(250, 120, 50, random.randint(0x101010, 0xffffff))
 gfx.fillSmoothRoundRect(100, 100, 100, 100, 10,
                         random.randint(0x101010, 0xffffff))
 
-# gfx.setTextDatum(m5gfx.textdatum_t.middle_center)
+gfx.setTextFont(m5gfx.efontCN_24)
 
-gfx.setTextColor(0x123456)
 gfx.setTextColor(0x000000, 0xffffff)
 
 gfx.drawString("Hello, World!", 160, 120)
