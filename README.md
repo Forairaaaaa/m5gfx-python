@@ -22,5 +22,6 @@ issue:
 
 - no pushImage yet
 
-- set font crash
+- RLEfont not working
+
 

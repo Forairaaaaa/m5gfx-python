@@ -12,7 +12,6 @@
 #include <M5GFX.h>
 #include <cstddef>
 #include <cstdint>
-#include "lgfx/v1/lgfx_fonts.hpp"
 #include "lgfx_sdl.hpp"
 
 namespace py = pybind11;
@@ -20,94 +19,208 @@ namespace py = pybind11;
 PYBIND11_MODULE(m5gfx, m)
 {
     m.doc() = "Graphics library for M5Stack series  \n";
-    m.def("delay", lgfx::delay, pybind11::arg("milliseconds"));
-    m.attr("DejaVu9")       = (unsigned long long)&lgfx::v1::fonts::DejaVu9;
-    m.attr("DejaVu12")      = (unsigned long long)&lgfx::v1::fonts::DejaVu12;
-    m.attr("DejaVu18")      = (unsigned long long)&lgfx::v1::fonts::DejaVu18;
-    m.attr("DejaVu24")      = (unsigned long long)&lgfx::v1::fonts::DejaVu24;
-    m.attr("DejaVu40")      = (unsigned long long)&lgfx::v1::fonts::DejaVu40;
-    m.attr("DejaVu56")      = (unsigned long long)&lgfx::v1::fonts::DejaVu56;
-    m.attr("DejaVu72")      = (unsigned long long)&lgfx::v1::fonts::DejaVu72;
-    m.attr("efontCN_10")    = (unsigned long long)&lgfx::v1::fonts::efontCN_10;
-    m.attr("efontCN_10_b")  = (unsigned long long)&lgfx::v1::fonts::efontCN_10_b;
-    m.attr("efontCN_10_bi") = (unsigned long long)&lgfx::v1::fonts::efontCN_10_bi;
-    m.attr("efontCN_10_i")  = (unsigned long long)&lgfx::v1::fonts::efontCN_10_i;
-    m.attr("efontCN_12")    = (unsigned long long)&lgfx::v1::fonts::efontCN_12;
-    m.attr("efontCN_12_b")  = (unsigned long long)&lgfx::v1::fonts::efontCN_12_b;
-    m.attr("efontCN_12_bi") = (unsigned long long)&lgfx::v1::fonts::efontCN_12_bi;
-    m.attr("efontCN_12_i")  = (unsigned long long)&lgfx::v1::fonts::efontCN_12_i;
-    m.attr("efontCN_14")    = (unsigned long long)&lgfx::v1::fonts::efontCN_14;
-    m.attr("efontCN_14_b")  = (unsigned long long)&lgfx::v1::fonts::efontCN_14_b;
-    m.attr("efontCN_14_bi") = (unsigned long long)&lgfx::v1::fonts::efontCN_14_bi;
-    m.attr("efontCN_14_i")  = (unsigned long long)&lgfx::v1::fonts::efontCN_14_i;
-    m.attr("efontCN_16")    = (unsigned long long)&lgfx::v1::fonts::efontCN_16;
-    m.attr("efontCN_16_b")  = (unsigned long long)&lgfx::v1::fonts::efontCN_16_b;
-    m.attr("efontCN_16_bi") = (unsigned long long)&lgfx::v1::fonts::efontCN_16_bi;
-    m.attr("efontCN_16_i")  = (unsigned long long)&lgfx::v1::fonts::efontCN_16_i;
-    m.attr("efontCN_24")    = (unsigned long long)&lgfx::v1::fonts::efontCN_24;
-    m.attr("efontCN_24_b")  = (unsigned long long)&lgfx::v1::fonts::efontCN_24_b;
-    m.attr("efontCN_24_bi") = (unsigned long long)&lgfx::v1::fonts::efontCN_24_bi;
-    m.attr("efontCN_24_i")  = (unsigned long long)&lgfx::v1::fonts::efontCN_24_i;
-    m.attr("efontJA_10")    = (unsigned long long)&lgfx::v1::fonts::efontJA_10;
-    m.attr("efontJA_10_b")  = (unsigned long long)&lgfx::v1::fonts::efontJA_10_b;
-    m.attr("efontJA_10_bi") = (unsigned long long)&lgfx::v1::fonts::efontJA_10_bi;
-    m.attr("efontJA_10_i")  = (unsigned long long)&lgfx::v1::fonts::efontJA_10_i;
-    m.attr("efontJA_12")    = (unsigned long long)&lgfx::v1::fonts::efontJA_12;
-    m.attr("efontJA_12_b")  = (unsigned long long)&lgfx::v1::fonts::efontJA_12_b;
-    m.attr("efontJA_12_bi") = (unsigned long long)&lgfx::v1::fonts::efontJA_12_bi;
-    m.attr("efontJA_12_i")  = (unsigned long long)&lgfx::v1::fonts::efontJA_12_i;
-    m.attr("efontJA_14")    = (unsigned long long)&lgfx::v1::fonts::efontJA_14;
-    m.attr("efontJA_14_b")  = (unsigned long long)&lgfx::v1::fonts::efontJA_14_b;
-    m.attr("efontJA_14_bi") = (unsigned long long)&lgfx::v1::fonts::efontJA_14_bi;
-    m.attr("efontJA_14_i")  = (unsigned long long)&lgfx::v1::fonts::efontJA_14_i;
-    m.attr("efontJA_16")    = (unsigned long long)&lgfx::v1::fonts::efontJA_16;
-    m.attr("efontJA_16_b")  = (unsigned long long)&lgfx::v1::fonts::efontJA_16_b;
-    m.attr("efontJA_16_bi") = (unsigned long long)&lgfx::v1::fonts::efontJA_16_bi;
-    m.attr("efontJA_16_i")  = (unsigned long long)&lgfx::v1::fonts::efontJA_16_i;
-    m.attr("efontJA_24")    = (unsigned long long)&lgfx::v1::fonts::efontJA_24;
-    m.attr("efontJA_24_b")  = (unsigned long long)&lgfx::v1::fonts::efontJA_24_b;
-    m.attr("efontJA_24_bi") = (unsigned long long)&lgfx::v1::fonts::efontJA_24_bi;
-    m.attr("efontJA_24_i")  = (unsigned long long)&lgfx::v1::fonts::efontJA_24_i;
-    m.attr("efontKR_10")    = (unsigned long long)&lgfx::v1::fonts::efontKR_10;
-    m.attr("efontKR_10_b")  = (unsigned long long)&lgfx::v1::fonts::efontKR_10_b;
-    m.attr("efontKR_10_bi") = (unsigned long long)&lgfx::v1::fonts::efontKR_10_bi;
-    m.attr("efontKR_10_i")  = (unsigned long long)&lgfx::v1::fonts::efontKR_10_i;
-    m.attr("efontKR_12")    = (unsigned long long)&lgfx::v1::fonts::efontKR_12;
-    m.attr("efontKR_12_b")  = (unsigned long long)&lgfx::v1::fonts::efontKR_12_b;
-    m.attr("efontKR_12_bi") = (unsigned long long)&lgfx::v1::fonts::efontKR_12_bi;
-    m.attr("efontKR_12_i")  = (unsigned long long)&lgfx::v1::fonts::efontKR_12_i;
-    m.attr("efontKR_14")    = (unsigned long long)&lgfx::v1::fonts::efontKR_14;
-    m.attr("efontKR_14_b")  = (unsigned long long)&lgfx::v1::fonts::efontKR_14_b;
-    m.attr("efontKR_14_bi") = (unsigned long long)&lgfx::v1::fonts::efontKR_14_bi;
-    m.attr("efontKR_14_i")  = (unsigned long long)&lgfx::v1::fonts::efontKR_14_i;
-    m.attr("efontKR_16")    = (unsigned long long)&lgfx::v1::fonts::efontKR_16;
-    m.attr("efontKR_16_b")  = (unsigned long long)&lgfx::v1::fonts::efontKR_16_b;
-    m.attr("efontKR_16_bi") = (unsigned long long)&lgfx::v1::fonts::efontKR_16_bi;
-    m.attr("efontKR_16_i")  = (unsigned long long)&lgfx::v1::fonts::efontKR_16_i;
-    m.attr("efontKR_24")    = (unsigned long long)&lgfx::v1::fonts::efontKR_24;
-    m.attr("efontKR_24_b")  = (unsigned long long)&lgfx::v1::fonts::efontKR_24_b;
-    m.attr("efontKR_24_bi") = (unsigned long long)&lgfx::v1::fonts::efontKR_24_bi;
-    m.attr("efontKR_24_i")  = (unsigned long long)&lgfx::v1::fonts::efontKR_24_i;
-    m.attr("efontTW_10")    = (unsigned long long)&lgfx::v1::fonts::efontTW_10;
-    m.attr("efontTW_10_b")  = (unsigned long long)&lgfx::v1::fonts::efontTW_10_b;
-    m.attr("efontTW_10_bi") = (unsigned long long)&lgfx::v1::fonts::efontTW_10_bi;
-    m.attr("efontTW_10_i")  = (unsigned long long)&lgfx::v1::fonts::efontTW_10_i;
-    m.attr("efontTW_12")    = (unsigned long long)&lgfx::v1::fonts::efontTW_12;
-    m.attr("efontTW_12_b")  = (unsigned long long)&lgfx::v1::fonts::efontTW_12_b;
-    m.attr("efontTW_12_bi") = (unsigned long long)&lgfx::v1::fonts::efontTW_12_bi;
-    m.attr("efontTW_12_i")  = (unsigned long long)&lgfx::v1::fonts::efontTW_12_i;
-    m.attr("efontTW_14")    = (unsigned long long)&lgfx::v1::fonts::efontTW_14;
-    m.attr("efontTW_14_b")  = (unsigned long long)&lgfx::v1::fonts::efontTW_14_b;
-    m.attr("efontTW_14_bi") = (unsigned long long)&lgfx::v1::fonts::efontTW_14_bi;
-    m.attr("efontTW_14_i")  = (unsigned long long)&lgfx::v1::fonts::efontTW_14_i;
-    m.attr("efontTW_16")    = (unsigned long long)&lgfx::v1::fonts::efontTW_16;
-    m.attr("efontTW_16_b")  = (unsigned long long)&lgfx::v1::fonts::efontTW_16_b;
-    m.attr("efontTW_16_bi") = (unsigned long long)&lgfx::v1::fonts::efontTW_16_bi;
-    m.attr("efontTW_16_i")  = (unsigned long long)&lgfx::v1::fonts::efontTW_16_i;
-    m.attr("efontTW_24")    = (unsigned long long)&lgfx::v1::fonts::efontTW_24;
-    m.attr("efontTW_24_b")  = (unsigned long long)&lgfx::v1::fonts::efontTW_24_b;
-    m.attr("efontTW_24_bi") = (unsigned long long)&lgfx::v1::fonts::efontTW_24_bi;
-    m.attr("efontTW_24_i")  = (unsigned long long)&lgfx::v1::fonts::efontTW_24_i;
+
+    auto ifont        = py::class_<lgfx::IFont>(m, "IFont");
+    auto basefont     = py::class_<lgfx::BaseFont, lgfx::IFont>(m, "BaseFont");
+    auto u8g2font     = py::class_<lgfx::U8g2font, lgfx::IFont>(m, "U8g2font");
+    auto glcdfont     = py::class_<lgfx::GLCDfont, lgfx::BaseFont>(m, "GLCDfont");
+    auto gfxfont      = py::class_<lgfx::GFXfont, lgfx::IFont>(m, "GFXfont");
+    auto bmpfont      = py::class_<lgfx::BMPfont, lgfx::BaseFont>(m, "BMPfont");
+    auto rlefont      = py::class_<lgfx::RLEfont, lgfx::BMPfont>(m, "RLEfont");
+    auto bdffont      = py::class_<lgfx::BDFfont, lgfx::BaseFont>(m, "BDFfont");
+    auto fixedbmpfont = py::class_<lgfx::FixedBMPfont, lgfx::BaseFont>(m, "FixedBMPfont");
+
+    m.attr("Font0")          = py::cast(&lgfx::v1::fonts::Font0);
+    m.attr("Font2")          = py::cast(&lgfx::v1::fonts::Font2);
+    m.attr("Font4")          = py::cast(&lgfx::v1::fonts::Font4);
+    m.attr("Font6")          = py::cast(&lgfx::v1::fonts::Font6);
+    m.attr("Font7")          = py::cast(&lgfx::v1::fonts::Font7);
+    m.attr("Font8")          = py::cast(&lgfx::v1::fonts::Font8);
+    m.attr("Font8x8C64")     = py::cast(&lgfx::v1::fonts::Font8x8C64);
+    m.attr("AsciiFont8x16")  = py::cast(&lgfx::v1::fonts::AsciiFont8x16);
+    m.attr("AsciiFont24x48") = py::cast(&lgfx::v1::fonts::AsciiFont24x48);
+
+    m.attr("TomThumb")                  = py::cast(&lgfx::v1::fonts::TomThumb);
+    m.attr("FreeMono9pt7b")             = py::cast(&lgfx::v1::fonts::FreeMono9pt7b);
+    m.attr("FreeMono12pt7b")            = py::cast(&lgfx::v1::fonts::FreeMono12pt7b);
+    m.attr("FreeMono18pt7b")            = py::cast(&lgfx::v1::fonts::FreeMono18pt7b);
+    m.attr("FreeMono24pt7b")            = py::cast(&lgfx::v1::fonts::FreeMono24pt7b);
+    m.attr("FreeMonoBold9pt7b")         = py::cast(&lgfx::v1::fonts::FreeMonoBold9pt7b);
+    m.attr("FreeMonoBold12pt7b")        = py::cast(&lgfx::v1::fonts::FreeMonoBold12pt7b);
+    m.attr("FreeMonoBold18pt7b")        = py::cast(&lgfx::v1::fonts::FreeMonoBold18pt7b);
+    m.attr("FreeMonoBold24pt7b")        = py::cast(&lgfx::v1::fonts::FreeMonoBold24pt7b);
+    m.attr("FreeMonoOblique9pt7b")      = py::cast(&lgfx::v1::fonts::FreeMonoOblique9pt7b);
+    m.attr("FreeMonoOblique12pt7b")     = py::cast(&lgfx::v1::fonts::FreeMonoOblique12pt7b);
+    m.attr("FreeMonoOblique18pt7b")     = py::cast(&lgfx::v1::fonts::FreeMonoOblique18pt7b);
+    m.attr("FreeMonoOblique24pt7b")     = py::cast(&lgfx::v1::fonts::FreeMonoOblique24pt7b);
+    m.attr("FreeMonoBoldOblique9pt7b")  = py::cast(&lgfx::v1::fonts::FreeMonoBoldOblique9pt7b);
+    m.attr("FreeMonoBoldOblique12pt7b") = py::cast(&lgfx::v1::fonts::FreeMonoBoldOblique12pt7b);
+    m.attr("FreeMonoBoldOblique18pt7b") = py::cast(&lgfx::v1::fonts::FreeMonoBoldOblique18pt7b);
+    m.attr("FreeMonoBoldOblique24pt7b") = py::cast(&lgfx::v1::fonts::FreeMonoBoldOblique24pt7b);
+    m.attr("FreeSans9pt7b")             = py::cast(&lgfx::v1::fonts::FreeSans9pt7b);
+    m.attr("FreeSans12pt7b")            = py::cast(&lgfx::v1::fonts::FreeSans12pt7b);
+    m.attr("FreeSans18pt7b")            = py::cast(&lgfx::v1::fonts::FreeSans18pt7b);
+    m.attr("FreeSans24pt7b")            = py::cast(&lgfx::v1::fonts::FreeSans24pt7b);
+    m.attr("FreeSansBold9pt7b")         = py::cast(&lgfx::v1::fonts::FreeSansBold9pt7b);
+    m.attr("FreeSansBold12pt7b")        = py::cast(&lgfx::v1::fonts::FreeSansBold12pt7b);
+    m.attr("FreeSansBold18pt7b")        = py::cast(&lgfx::v1::fonts::FreeSansBold18pt7b);
+    m.attr("FreeSansBold24pt7b")        = py::cast(&lgfx::v1::fonts::FreeSansBold24pt7b);
+    m.attr("FreeSansOblique9pt7b")      = py::cast(&lgfx::v1::fonts::FreeSansOblique9pt7b);
+    m.attr("FreeSansOblique12pt7b")     = py::cast(&lgfx::v1::fonts::FreeSansOblique12pt7b);
+    m.attr("FreeSansOblique18pt7b")     = py::cast(&lgfx::v1::fonts::FreeSansOblique18pt7b);
+    m.attr("FreeSansOblique24pt7b")     = py::cast(&lgfx::v1::fonts::FreeSansOblique24pt7b);
+    m.attr("FreeSansBoldOblique9pt7b")  = py::cast(&lgfx::v1::fonts::FreeSansBoldOblique9pt7b);
+    m.attr("FreeSansBoldOblique12pt7b") = py::cast(&lgfx::v1::fonts::FreeSansBoldOblique12pt7b);
+    m.attr("FreeSansBoldOblique18pt7b") = py::cast(&lgfx::v1::fonts::FreeSansBoldOblique18pt7b);
+    m.attr("FreeSansBoldOblique24pt7b") = py::cast(&lgfx::v1::fonts::FreeSansBoldOblique24pt7b);
+    m.attr("FreeSerif9pt7b")            = py::cast(&lgfx::v1::fonts::FreeSerif9pt7b);
+    m.attr("FreeSerif12pt7b")           = py::cast(&lgfx::v1::fonts::FreeSerif12pt7b);
+    m.attr("FreeSerif18pt7b")           = py::cast(&lgfx::v1::fonts::FreeSerif18pt7b);
+    m.attr("FreeSerif24pt7b")           = py::cast(&lgfx::v1::fonts::FreeSerif24pt7b);
+    m.attr("FreeSerifItalic9pt7b")      = py::cast(&lgfx::v1::fonts::FreeSerifItalic9pt7b);
+    m.attr("FreeSerifItalic12pt7b")     = py::cast(&lgfx::v1::fonts::FreeSerifItalic12pt7b);
+    m.attr("FreeSerifItalic18pt7b")     = py::cast(&lgfx::v1::fonts::FreeSerifItalic18pt7b);
+    m.attr("FreeSerifItalic24pt7b")     = py::cast(&lgfx::v1::fonts::FreeSerifItalic24pt7b);
+    m.attr("FreeSerifBold9pt7b")        = py::cast(&lgfx::v1::fonts::FreeSerifBold9pt7b);
+    m.attr("FreeSerifBold12pt7b")       = py::cast(&lgfx::v1::fonts::FreeSerifBold12pt7b);
+    m.attr("FreeSerifBold18pt7b")       = py::cast(&lgfx::v1::fonts::FreeSerifBold18pt7b);
+    m.attr("FreeSerifBold24pt7b")       = py::cast(&lgfx::v1::fonts::FreeSerifBold24pt7b);
+    m.attr("FreeSerifBoldItalic9pt7b")  = py::cast(&lgfx::v1::fonts::FreeSerifBoldItalic9pt7b);
+    m.attr("FreeSerifBoldItalic12pt7b") = py::cast(&lgfx::v1::fonts::FreeSerifBoldItalic12pt7b);
+    m.attr("FreeSerifBoldItalic18pt7b") = py::cast(&lgfx::v1::fonts::FreeSerifBoldItalic18pt7b);
+    m.attr("FreeSerifBoldItalic24pt7b") = py::cast(&lgfx::v1::fonts::FreeSerifBoldItalic24pt7b);
+
+    m.attr("Orbitron_Light_24") = py::cast(&lgfx::v1::fonts::Orbitron_Light_24);
+    m.attr("Orbitron_Light_32") = py::cast(&lgfx::v1::fonts::Orbitron_Light_32);
+    m.attr("Roboto_Thin_24")    = py::cast(&lgfx::v1::fonts::Roboto_Thin_24);
+    m.attr("Satisfy_24")        = py::cast(&lgfx::v1::fonts::Satisfy_24);
+    m.attr("Yellowtail_32")     = py::cast(&lgfx::v1::fonts::Yellowtail_32);
+
+    m.attr("DejaVu9")  = py::cast(&lgfx::v1::fonts::DejaVu9);
+    m.attr("DejaVu12") = py::cast(&lgfx::v1::fonts::DejaVu12);
+    m.attr("DejaVu18") = py::cast(&lgfx::v1::fonts::DejaVu18);
+    m.attr("DejaVu24") = py::cast(&lgfx::v1::fonts::DejaVu24);
+    m.attr("DejaVu40") = py::cast(&lgfx::v1::fonts::DejaVu40);
+    m.attr("DejaVu56") = py::cast(&lgfx::v1::fonts::DejaVu56);
+    m.attr("DejaVu72") = py::cast(&lgfx::v1::fonts::DejaVu72);
+
+    m.attr("lgfxJapanMincho_8")   = py::cast(&lgfx::v1::fonts::lgfxJapanMincho_8);
+    m.attr("lgfxJapanMincho_12")  = py::cast(&lgfx::v1::fonts::lgfxJapanMincho_12);
+    m.attr("lgfxJapanMincho_16")  = py::cast(&lgfx::v1::fonts::lgfxJapanMincho_16);
+    m.attr("lgfxJapanMincho_20")  = py::cast(&lgfx::v1::fonts::lgfxJapanMincho_20);
+    m.attr("lgfxJapanMincho_24")  = py::cast(&lgfx::v1::fonts::lgfxJapanMincho_24);
+    m.attr("lgfxJapanMincho_28")  = py::cast(&lgfx::v1::fonts::lgfxJapanMincho_28);
+    m.attr("lgfxJapanMincho_32")  = py::cast(&lgfx::v1::fonts::lgfxJapanMincho_32);
+    m.attr("lgfxJapanMincho_36")  = py::cast(&lgfx::v1::fonts::lgfxJapanMincho_36);
+    m.attr("lgfxJapanMincho_40")  = py::cast(&lgfx::v1::fonts::lgfxJapanMincho_40);
+    m.attr("lgfxJapanMinchoP_8")  = py::cast(&lgfx::v1::fonts::lgfxJapanMinchoP_8);
+    m.attr("lgfxJapanMinchoP_12") = py::cast(&lgfx::v1::fonts::lgfxJapanMinchoP_12);
+    m.attr("lgfxJapanMinchoP_16") = py::cast(&lgfx::v1::fonts::lgfxJapanMinchoP_16);
+    m.attr("lgfxJapanMinchoP_20") = py::cast(&lgfx::v1::fonts::lgfxJapanMinchoP_20);
+    m.attr("lgfxJapanMinchoP_24") = py::cast(&lgfx::v1::fonts::lgfxJapanMinchoP_24);
+    m.attr("lgfxJapanMinchoP_28") = py::cast(&lgfx::v1::fonts::lgfxJapanMinchoP_28);
+    m.attr("lgfxJapanMinchoP_32") = py::cast(&lgfx::v1::fonts::lgfxJapanMinchoP_32);
+    m.attr("lgfxJapanMinchoP_36") = py::cast(&lgfx::v1::fonts::lgfxJapanMinchoP_36);
+    m.attr("lgfxJapanMinchoP_40") = py::cast(&lgfx::v1::fonts::lgfxJapanMinchoP_40);
+    m.attr("lgfxJapanGothic_8")   = py::cast(&lgfx::v1::fonts::lgfxJapanGothic_8);
+    m.attr("lgfxJapanGothic_12")  = py::cast(&lgfx::v1::fonts::lgfxJapanGothic_12);
+    m.attr("lgfxJapanGothic_16")  = py::cast(&lgfx::v1::fonts::lgfxJapanGothic_16);
+    m.attr("lgfxJapanGothic_20")  = py::cast(&lgfx::v1::fonts::lgfxJapanGothic_20);
+    m.attr("lgfxJapanGothic_24")  = py::cast(&lgfx::v1::fonts::lgfxJapanGothic_24);
+    m.attr("lgfxJapanGothic_28")  = py::cast(&lgfx::v1::fonts::lgfxJapanGothic_28);
+    m.attr("lgfxJapanGothic_32")  = py::cast(&lgfx::v1::fonts::lgfxJapanGothic_32);
+    m.attr("lgfxJapanGothic_36")  = py::cast(&lgfx::v1::fonts::lgfxJapanGothic_36);
+    m.attr("lgfxJapanGothic_40")  = py::cast(&lgfx::v1::fonts::lgfxJapanGothic_40);
+    m.attr("lgfxJapanGothicP_8")  = py::cast(&lgfx::v1::fonts::lgfxJapanGothicP_8);
+    m.attr("lgfxJapanGothicP_12") = py::cast(&lgfx::v1::fonts::lgfxJapanGothicP_12);
+    m.attr("lgfxJapanGothicP_16") = py::cast(&lgfx::v1::fonts::lgfxJapanGothicP_16);
+    m.attr("lgfxJapanGothicP_20") = py::cast(&lgfx::v1::fonts::lgfxJapanGothicP_20);
+    m.attr("lgfxJapanGothicP_24") = py::cast(&lgfx::v1::fonts::lgfxJapanGothicP_24);
+    m.attr("lgfxJapanGothicP_28") = py::cast(&lgfx::v1::fonts::lgfxJapanGothicP_28);
+    m.attr("lgfxJapanGothicP_32") = py::cast(&lgfx::v1::fonts::lgfxJapanGothicP_32);
+    m.attr("lgfxJapanGothicP_36") = py::cast(&lgfx::v1::fonts::lgfxJapanGothicP_36);
+    m.attr("lgfxJapanGothicP_40") = py::cast(&lgfx::v1::fonts::lgfxJapanGothicP_40);
+
+    m.attr("efontCN_10")    = py::cast(&lgfx::v1::fonts::efontCN_10);
+    m.attr("efontCN_10_b")  = py::cast(&lgfx::v1::fonts::efontCN_10_b);
+    m.attr("efontCN_10_bi") = py::cast(&lgfx::v1::fonts::efontCN_10_bi);
+    m.attr("efontCN_10_i")  = py::cast(&lgfx::v1::fonts::efontCN_10_i);
+    m.attr("efontCN_12")    = py::cast(&lgfx::v1::fonts::efontCN_12);
+    m.attr("efontCN_12_b")  = py::cast(&lgfx::v1::fonts::efontCN_12_b);
+    m.attr("efontCN_12_bi") = py::cast(&lgfx::v1::fonts::efontCN_12_bi);
+    m.attr("efontCN_12_i")  = py::cast(&lgfx::v1::fonts::efontCN_12_i);
+    m.attr("efontCN_14")    = py::cast(&lgfx::v1::fonts::efontCN_14);
+    m.attr("efontCN_14_b")  = py::cast(&lgfx::v1::fonts::efontCN_14_b);
+    m.attr("efontCN_14_bi") = py::cast(&lgfx::v1::fonts::efontCN_14_bi);
+    m.attr("efontCN_14_i")  = py::cast(&lgfx::v1::fonts::efontCN_14_i);
+    m.attr("efontCN_16")    = py::cast(&lgfx::v1::fonts::efontCN_16);
+    m.attr("efontCN_16_b")  = py::cast(&lgfx::v1::fonts::efontCN_16_b);
+    m.attr("efontCN_16_bi") = py::cast(&lgfx::v1::fonts::efontCN_16_bi);
+    m.attr("efontCN_16_i")  = py::cast(&lgfx::v1::fonts::efontCN_16_i);
+    m.attr("efontCN_24")    = py::cast(&lgfx::v1::fonts::efontCN_24);
+    m.attr("efontCN_24_b")  = py::cast(&lgfx::v1::fonts::efontCN_24_b);
+    m.attr("efontCN_24_bi") = py::cast(&lgfx::v1::fonts::efontCN_24_bi);
+    m.attr("efontCN_24_i")  = py::cast(&lgfx::v1::fonts::efontCN_24_i);
+    m.attr("efontJA_10")    = py::cast(&lgfx::v1::fonts::efontJA_10);
+    m.attr("efontJA_10_b")  = py::cast(&lgfx::v1::fonts::efontJA_10_b);
+    m.attr("efontJA_10_bi") = py::cast(&lgfx::v1::fonts::efontJA_10_bi);
+    m.attr("efontJA_10_i")  = py::cast(&lgfx::v1::fonts::efontJA_10_i);
+    m.attr("efontJA_12")    = py::cast(&lgfx::v1::fonts::efontJA_12);
+    m.attr("efontJA_12_b")  = py::cast(&lgfx::v1::fonts::efontJA_12_b);
+    m.attr("efontJA_12_bi") = py::cast(&lgfx::v1::fonts::efontJA_12_bi);
+    m.attr("efontJA_12_i")  = py::cast(&lgfx::v1::fonts::efontJA_12_i);
+    m.attr("efontJA_14")    = py::cast(&lgfx::v1::fonts::efontJA_14);
+    m.attr("efontJA_14_b")  = py::cast(&lgfx::v1::fonts::efontJA_14_b);
+    m.attr("efontJA_14_bi") = py::cast(&lgfx::v1::fonts::efontJA_14_bi);
+    m.attr("efontJA_14_i")  = py::cast(&lgfx::v1::fonts::efontJA_14_i);
+    m.attr("efontJA_16")    = py::cast(&lgfx::v1::fonts::efontJA_16);
+    m.attr("efontJA_16_b")  = py::cast(&lgfx::v1::fonts::efontJA_16_b);
+    m.attr("efontJA_16_bi") = py::cast(&lgfx::v1::fonts::efontJA_16_bi);
+    m.attr("efontJA_16_i")  = py::cast(&lgfx::v1::fonts::efontJA_16_i);
+    m.attr("efontJA_24")    = py::cast(&lgfx::v1::fonts::efontJA_24);
+    m.attr("efontJA_24_b")  = py::cast(&lgfx::v1::fonts::efontJA_24_b);
+    m.attr("efontJA_24_bi") = py::cast(&lgfx::v1::fonts::efontJA_24_bi);
+    m.attr("efontJA_24_i")  = py::cast(&lgfx::v1::fonts::efontJA_24_i);
+    m.attr("efontKR_10")    = py::cast(&lgfx::v1::fonts::efontKR_10);
+    m.attr("efontKR_10_b")  = py::cast(&lgfx::v1::fonts::efontKR_10_b);
+    m.attr("efontKR_10_bi") = py::cast(&lgfx::v1::fonts::efontKR_10_bi);
+    m.attr("efontKR_10_i")  = py::cast(&lgfx::v1::fonts::efontKR_10_i);
+    m.attr("efontKR_12")    = py::cast(&lgfx::v1::fonts::efontKR_12);
+    m.attr("efontKR_12_b")  = py::cast(&lgfx::v1::fonts::efontKR_12_b);
+    m.attr("efontKR_12_bi") = py::cast(&lgfx::v1::fonts::efontKR_12_bi);
+    m.attr("efontKR_12_i")  = py::cast(&lgfx::v1::fonts::efontKR_12_i);
+    m.attr("efontKR_14")    = py::cast(&lgfx::v1::fonts::efontKR_14);
+    m.attr("efontKR_14_b")  = py::cast(&lgfx::v1::fonts::efontKR_14_b);
+    m.attr("efontKR_14_bi") = py::cast(&lgfx::v1::fonts::efontKR_14_bi);
+    m.attr("efontKR_14_i")  = py::cast(&lgfx::v1::fonts::efontKR_14_i);
+    m.attr("efontKR_16")    = py::cast(&lgfx::v1::fonts::efontKR_16);
+    m.attr("efontKR_16_b")  = py::cast(&lgfx::v1::fonts::efontKR_16_b);
+    m.attr("efontKR_16_bi") = py::cast(&lgfx::v1::fonts::efontKR_16_bi);
+    m.attr("efontKR_16_i")  = py::cast(&lgfx::v1::fonts::efontKR_16_i);
+    m.attr("efontKR_24")    = py::cast(&lgfx::v1::fonts::efontKR_24);
+    m.attr("efontKR_24_b")  = py::cast(&lgfx::v1::fonts::efontKR_24_b);
+    m.attr("efontKR_24_bi") = py::cast(&lgfx::v1::fonts::efontKR_24_bi);
+    m.attr("efontKR_24_i")  = py::cast(&lgfx::v1::fonts::efontKR_24_i);
+    m.attr("efontTW_10")    = py::cast(&lgfx::v1::fonts::efontTW_10);
+    m.attr("efontTW_10_b")  = py::cast(&lgfx::v1::fonts::efontTW_10_b);
+    m.attr("efontTW_10_bi") = py::cast(&lgfx::v1::fonts::efontTW_10_bi);
+    m.attr("efontTW_10_i")  = py::cast(&lgfx::v1::fonts::efontTW_10_i);
+    m.attr("efontTW_12")    = py::cast(&lgfx::v1::fonts::efontTW_12);
+    m.attr("efontTW_12_b")  = py::cast(&lgfx::v1::fonts::efontTW_12_b);
+    m.attr("efontTW_12_bi") = py::cast(&lgfx::v1::fonts::efontTW_12_bi);
+    m.attr("efontTW_12_i")  = py::cast(&lgfx::v1::fonts::efontTW_12_i);
+    m.attr("efontTW_14")    = py::cast(&lgfx::v1::fonts::efontTW_14);
+    m.attr("efontTW_14_b")  = py::cast(&lgfx::v1::fonts::efontTW_14_b);
+    m.attr("efontTW_14_bi") = py::cast(&lgfx::v1::fonts::efontTW_14_bi);
+    m.attr("efontTW_14_i")  = py::cast(&lgfx::v1::fonts::efontTW_14_i);
+    m.attr("efontTW_16")    = py::cast(&lgfx::v1::fonts::efontTW_16);
+    m.attr("efontTW_16_b")  = py::cast(&lgfx::v1::fonts::efontTW_16_b);
+    m.attr("efontTW_16_bi") = py::cast(&lgfx::v1::fonts::efontTW_16_bi);
+    m.attr("efontTW_16_i")  = py::cast(&lgfx::v1::fonts::efontTW_16_i);
+    m.attr("efontTW_24")    = py::cast(&lgfx::v1::fonts::efontTW_24);
+    m.attr("efontTW_24_b")  = py::cast(&lgfx::v1::fonts::efontTW_24_b);
+    m.attr("efontTW_24_bi") = py::cast(&lgfx::v1::fonts::efontTW_24_bi);
+    m.attr("efontTW_24_i")  = py::cast(&lgfx::v1::fonts::efontTW_24_i);
 
     py::class_<lgfx::v1::TextStyle>(m, "TextStyle")
         .def(py::init())
@@ -344,13 +457,12 @@ PYBIND11_MODULE(m5gfx, m)
         .def("setTextColor", [](LGFX& self, uint32_t arg0, uint32_t arg1) { self.setTextColor(arg0, arg1); })
         .def("fontHeight",
              [](LGFX& self, unsigned long long font) -> int { return self.fontHeight((const lgfx::GFXfont*)font); })
-        .def(
-            "setTextFont", [](LGFX& self, int f) -> void { self.setTextFont(f); }, pybind11::arg("f"))
+        .def("setTextFont", &LGFX::setFont)
         .def(
             "loadFont", [](LGFX& self, const std::string& path) -> void { self.loadFont(path.c_str()); },
             pybind11::arg("path"))
         .def("unloadFont", [](LGFX& self) -> void { self.unloadFont(); })
-        .def("setFont", [](LGFX& self, int font) -> void {})
+        .def("setFont", &LGFX::setFont)
         .def("drawString", static_cast<size_t (LGFX::*)(const char* string, int32_t x, int32_t y)>(&LGFX::drawString))
         .def("drawNumber", static_cast<size_t (LGFX::*)(long long_num, int32_t poX, int32_t poY)>(&LGFX::drawNumber))
         .def("drawFloat",
@@ -358,5 +470,7 @@ PYBIND11_MODULE(m5gfx, m)
         .def("drawCentreString",
              static_cast<size_t (LGFX::*)(const char* string, int32_t x, int32_t y)>(&LGFX::drawCentreString))
         .def("drawRightString",
-             static_cast<size_t (LGFX::*)(const char* string, int32_t x, int32_t y)>(&LGFX::drawRightString));
+             static_cast<size_t (LGFX::*)(const char* string, int32_t x, int32_t y)>(&LGFX::drawRightString))
+        .def("print", static_cast<size_t (LGFX::*)(const char* string)>(&LGFX::print))
+        .def("println", static_cast<size_t (LGFX::*)(const char* string)>(&LGFX::println));
 }
